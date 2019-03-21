@@ -1,7 +1,9 @@
+import java.util.List;
+
 /**
  * Class for a simple product.
  */
-public class Product {
+public class Product implements Element {
     private final String name;
     private final double price;
     private int quantity;
@@ -27,4 +29,11 @@ public class Product {
     public void adjustQuantity(int amount) {
         this.quantity += amount;
     }
+
+    @Override
+    public Object accept(Visitor visitor) {
+        return visitor.visit(this);
+    }
+
+
 }

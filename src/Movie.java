@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * A movie product.
  */
@@ -28,5 +30,10 @@ public class Movie extends Product {
 
     public String getDirector() {
         return director;
+    }
+
+    @Override
+    public Object accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 }

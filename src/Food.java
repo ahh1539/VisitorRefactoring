@@ -13,4 +13,8 @@ public class Food extends Product {
     public int getCalories() {
         return calories;
     }
+
+    public Object accept(Visitor visitor) {
+        return null;
+    }
 }

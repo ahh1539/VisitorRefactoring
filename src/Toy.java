@@ -22,4 +22,8 @@ public class Toy extends Product {
     public boolean requiresBatteries() {
         return requiresBatteries;
     }
+
+    public Object accept(Visitor visitor) {
+        return null;
+    }
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * A warehouse of products.
  */
-public class Warehouse {
+public class Warehouse implements Element {
     private Map<String, Product> inventory;
 
     public Warehouse() {
@@ -72,5 +72,14 @@ public class Warehouse {
 
         return toys;
     }
+
+    public Map<String, Product> getInventory() {
+        return inventory;
+    }
+
+    public Object accept(Visitor visitor) {
+        return visitor.visit(this);
+    }
+
 
 }

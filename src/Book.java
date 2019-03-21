@@ -25,4 +25,8 @@ public class Book extends Product {
     public int getNumberOfPages() {
         return numberOfPages;
     }
+
+    public Object accept(Visitor visitor) {
+        return null;
+    }
 }
