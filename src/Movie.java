@@ -33,7 +33,7 @@ public class Movie extends Product {
     }
 
     @Override
-    public Object accept(Visitor visitor) {
-        return visitor.visit(this);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

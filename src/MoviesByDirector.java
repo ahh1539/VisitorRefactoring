@@ -2,33 +2,23 @@ import java.util.List;
 
 public class MoviesByDirector implements Visitor {
     @Override
-    public Object visit(Book book) {
-        return null;
-    }
+    public void visit(Book book){ }
 
     @Override
-    public Object visit(Food food) {
-        return null;
-    }
+    public void visit(Food food) { }
 
     @Override
-    public Object visit(Movie movie) {
-        return null;
+    public void visit(Movie movie) {
+
     }
 
-    @Override
-    public Object visit(Product product) {
-        return null;
-    }
+//    @Override
+//    public void visit(Product product){ }
 
     @Override
-    public Object visit(Toy toy) {
-        return null;
-    }
+    public void visit(Toy toy) {}
 
     @Override
-    public Object visit(Warehouse warehouse) {
-        return null;
-    }
+    public void visit(Warehouse warehouse) { }
 }
 

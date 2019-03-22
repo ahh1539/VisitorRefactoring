@@ -30,10 +30,9 @@ public class Product implements Element {
         this.quantity += amount;
     }
 
+
     @Override
-    public Object accept(Visitor visitor) {
-        return visitor.visit(this);
+    public void accept(Visitor visitor) {
+
     }
-
-
 }

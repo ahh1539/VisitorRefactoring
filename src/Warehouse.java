@@ -9,6 +9,10 @@ import java.util.Map;
 public class Warehouse implements Element {
     private Map<String, Product> inventory;
 
+    private TotalInventoryValue totalVisitor = new TotalInventoryValue();
+    private ProductsToReorder reorderVisitor = new ProductsToReorder();
+    private ToysSuitableForAge toyVisitor = new ToysSuitableForAge();
+
     public Warehouse() {
         inventory = new HashMap<>();
     }
@@ -20,26 +24,23 @@ public class Warehouse implements Element {
     // product queries
 
     public double getTotalInventoryValue() {
-        double value = 0;
-
         for(Product product : inventory.values()) {
-            value = value + (product.getPrice() * product.getQuantity());
+            product.accept(totalVisitor);
         }
-
-        return value;
+        return totalVisitor.getTotal();
     }
 
     public List<Product> getProductsToReorder() {
-        List<Product> reorders = new ArrayList<>();
 
         for(Product product : inventory.values()) {
             if(product.getQuantity() < 5) {
-                reorders.add(product);
+                product.accept(reorderVisitor);
+
             }
         }
-
-        return reorders;
+        return reorderVisitor.getReorders();
     }
+
 
     public List<Movie> getMoviesByDirector(String director) {
 
@@ -53,32 +54,27 @@ public class Warehouse implements Element {
                 }
             }
         }
-
         return movies;
-
     }
 
+
     public List<Toy> getToysSuitableForAge(int age) {
-        List<Toy> toys = new ArrayList<>();
 
         for(Product product : inventory.values()) {
-            if(product instanceof  Toy) {
-                Toy toy = (Toy)product;
-                if(toy.getMinimumAge() >= age) {
-                    toys.add(toy);
-                }
-            }
+            toyVisitor.setAge(age);
+            product.accept(toyVisitor);
+
         }
 
-        return toys;
+        return toyVisitor.getToys();
     }
 
     public Map<String, Product> getInventory() {
         return inventory;
     }
 
-    public Object accept(Visitor visitor) {
-        return visitor.visit(this);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 

@@ -1,36 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductsToReorder implements Visitor {
 
-    public ProductsToReorder(){
+    private List<Product> reorders = new ArrayList<>();
 
-    }
-
-    @Override
-    public Object visit(Book book) {
-        return null;
-    }
+    public ProductsToReorder(){ }
 
     @Override
-    public Object visit(Food food) {
-        return null;
-    }
+    public void visit(Book book){ reorders.add(book);}
 
     @Override
-    public Object visit(Movie movie) {
-        return null;
-    }
+    public void visit(Food food) { reorders.add(food);}
 
     @Override
-    public Object visit(Product product) {
-        return null;
-    }
+    public void visit(Movie movie) { reorders.add(movie);}
 
     @Override
-    public Object visit(Toy toy) {
-        return null;
-    }
+    public void visit(Toy toy) { reorders.add(toy);}
 
     @Override
-    public Object visit(Warehouse warehouse) {
-        return null;
+    public void visit(Warehouse warehouse) { }
+
+    public List<Product> getReorders() {
+        return reorders;
     }
 }

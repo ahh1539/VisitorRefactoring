@@ -1,31 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ToysSuitableForAge implements Visitor {
-    @Override
-    public Object visit(Book book) {
-        return null;
+
+    int age = 0;
+    List<Toy> toys = new ArrayList<>();
+
+    ToysSuitableForAge(){
+
     }
 
     @Override
-    public Object visit(Food food) {
-        return null;
+    public void visit(Book book){ }
+
+    @Override
+    public void visit(Food food) { }
+
+    @Override
+    public void visit(Movie movie) { }
+
+//    @Override
+//    public void visit(Product product){
+//        if (product instanceof Toy){
+//            Toy toy = (Toy) product;
+//            visit(toy);
+//        }
+//    }
+
+    @Override
+    public void visit(Toy toy) {
+        if(toy.getMinimumAge() >= age) {
+            toys.add(toy);
+        }
     }
 
     @Override
-    public Object visit(Movie movie) {
-        return null;
+    public void visit(Warehouse warehouse) { }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    @Override
-    public Object visit(Product product) {
-        return null;
-    }
-
-    @Override
-    public Object visit(Toy toy) {
-        return null;
-    }
-
-    @Override
-    public Object visit(Warehouse warehouse) {
-        return null;
+    public List<Toy> getToys() {
+        return toys;
     }
 }

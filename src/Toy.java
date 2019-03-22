@@ -23,7 +23,7 @@ public class Toy extends Product {
         return requiresBatteries;
     }
 
-    public Object accept(Visitor visitor) {
-        return null;
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

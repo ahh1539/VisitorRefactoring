@@ -1,36 +1,38 @@
 import java.util.List;
 
 public class TotalInventoryValue implements Visitor {
+
+    private double total = 0;
+
+    public TotalInventoryValue(){
+
+    }
     @Override
-    public Object visit(Book book) {
-        return null;
+    public void visit(Book book) {
+        total = total + (book.getPrice() * book.getQuantity());
     }
 
     @Override
-    public Object visit(Food food) {
-        return null;
+    public void visit(Food food) {
+        total = total + (food.getPrice() * food.getQuantity());
     }
 
     @Override
-    public Object visit(Movie movie) {
-        return null;
-    }
+    public void visit(Movie movie) {total = total + ( movie.getPrice() * movie.getQuantity());}
+
+//    @Override
+//    public void visit(Product product) {
+//        total = total + (product.getPrice() * product.getQuantity());
+//    }
 
     @Override
-    public Object visit(Product product) {
-        return null;
+    public void visit(Toy toy) {
+        total = total + (toy.getPrice() * toy.getQuantity());
     }
 
-    @Override
-    public Object visit(Toy toy) {
-        return null;
-    }
+    public void visit(Warehouse warehouse) { }
 
-    public Object visit(Warehouse warehouse) {
-        double value = 0;
-        for (Product p: warehouse.getInventory().values()){
-            value = value + (p.getPrice() * p.getQuantity());
-        }
-        return value;
+    public double getTotal() {
+        return total;
     }
 }

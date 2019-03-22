@@ -2,15 +2,13 @@ import java.util.List;
 
 public interface Visitor {
 
-    Object visit(Book book);
+    void visit(Book book);
 
-    Object visit(Food food);
+    void visit(Food food);
 
-    Object visit(Movie movie);
+    void visit(Movie movie);
 
-    Object visit(Product product);
+    void visit(Toy toy);
 
-    Object visit(Toy toy);
-
-    Object visit(Warehouse warehouse);
+    void visit(Warehouse warehouse);
 }
