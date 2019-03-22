@@ -19,13 +19,6 @@ public class ToysSuitableForAge implements Visitor {
     @Override
     public void visit(Movie movie) { }
 
-//    @Override
-//    public void visit(Product product){
-//        if (product instanceof Toy){
-//            Toy toy = (Toy) product;
-//            visit(toy);
-//        }
-//    }
 
     @Override
     public void visit(Toy toy) {

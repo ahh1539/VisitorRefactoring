@@ -12,6 +12,9 @@ public class Warehouse implements Element {
     private TotalInventoryValue totalVisitor = new TotalInventoryValue();
     private ProductsToReorder reorderVisitor = new ProductsToReorder();
     private ToysSuitableForAge toyVisitor = new ToysSuitableForAge();
+    private MoviesByDirector moviesByDirectorVisitor = new MoviesByDirector();
+    private BatteriesRequired batteriesRequiredVisitor = new BatteriesRequired();
+    private CalorieCounter calorieCounterVisitor = new CalorieCounter();
 
     public Warehouse() {
         inventory = new HashMap<>();
@@ -43,18 +46,11 @@ public class Warehouse implements Element {
 
 
     public List<Movie> getMoviesByDirector(String director) {
-
-        List<Movie> movies = new ArrayList<>();
-
+        moviesByDirectorVisitor.setDirector(director);
         for(Product product : inventory.values()) {
-            if(product instanceof Movie) {
-                Movie movie = (Movie)product;
-                if(movie.getDirector().equals(director)) {
-                    movies.add(movie);
-                }
-            }
+            product.accept(moviesByDirectorVisitor);
         }
-        return movies;
+        return moviesByDirectorVisitor.getMovies();
     }
 
 
@@ -67,6 +63,22 @@ public class Warehouse implements Element {
         }
 
         return toyVisitor.getToys();
+    }
+
+    public List<Toy> requiresBatteries(){
+        for(Product product : inventory.values()) {
+            product.accept(batteriesRequiredVisitor);
+        }
+        return batteriesRequiredVisitor.getToys();
+    }
+
+
+    public List<Food> noFatty(int calories){
+        calorieCounterVisitor.setCalories(calories);
+        for(Product product : inventory.values()) {
+            product.accept(calorieCounterVisitor);
+        }
+        return calorieCounterVisitor.getFoods();
     }
 
     public Map<String, Product> getInventory() {

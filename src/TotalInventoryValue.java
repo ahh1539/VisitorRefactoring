@@ -20,11 +20,6 @@ public class TotalInventoryValue implements Visitor {
     @Override
     public void visit(Movie movie) {total = total + ( movie.getPrice() * movie.getQuantity());}
 
-//    @Override
-//    public void visit(Product product) {
-//        total = total + (product.getPrice() * product.getQuantity());
-//    }
-
     @Override
     public void visit(Toy toy) {
         total = total + (toy.getPrice() * toy.getQuantity());

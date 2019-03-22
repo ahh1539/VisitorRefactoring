@@ -114,4 +114,32 @@ public class WarehouseTest {
                 actual.size());
         assertTrue("Wrong toys!", actual.containsAll(expected));
     }
+
+    @Test
+    public void batteriesRequired(){
+        List<Toy> expected = new ArrayList<>(1);
+        expected.add(RC_CAR);
+
+        List<Toy> actual = warehouse.requiresBatteries();
+
+        assertNotNull("Should be one toy!", actual);
+        assertEquals("Wrong number of toys!", expected.size(),
+                actual.size());
+        assertTrue("Wrong toy!", actual.containsAll(expected));
+    }
+
+    @Test
+    public void fattyFood(){
+        List<Food> expected = new ArrayList<>(1);
+
+        expected.add(FRENCH_FRIES);
+        expected.add(WAFFLES);
+
+        List<Food> actual = warehouse.noFatty(1000);
+
+        assertNotNull("Should be 2 foods!", actual);
+        assertEquals("Wrong number of foods!", expected.size(),
+                actual.size());
+        assertTrue("Wrong foods!", actual.containsAll(expected));
+    }
 }
