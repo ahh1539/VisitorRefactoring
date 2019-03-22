@@ -22,6 +22,10 @@ public class BatteriesRequired implements Visitor {
 
     }
 
+    /**
+     * chacks to see if toy requires battery if so adds to list
+     * @param toy
+     */
     @Override
     public void visit(Toy toy) {
         if (toy.requiresBatteries()){

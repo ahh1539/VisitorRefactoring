@@ -13,6 +13,10 @@ public class CalorieCounter implements Visitor{
 
     }
 
+    /**
+     * checks if food is below or equal to calorie cap if so adds to list
+     * @param food
+     */
     @Override
     public void visit(Food food) {
         if (food.getCalories() <= calories){

@@ -33,6 +33,9 @@ public class Warehouse implements Element {
         return totalVisitor.getTotal();
     }
 
+    /**
+     * @returns list of products that are low on supply
+     */
     public List<Product> getProductsToReorder() {
 
         for(Product product : inventory.values()) {
@@ -44,7 +47,10 @@ public class Warehouse implements Element {
         return reorderVisitor.getReorders();
     }
 
-
+    /**
+     * @param director
+     * @returns list of movies whose director is input
+     */
     public List<Movie> getMoviesByDirector(String director) {
         moviesByDirectorVisitor.setDirector(director);
         for(Product product : inventory.values()) {
@@ -53,7 +59,11 @@ public class Warehouse implements Element {
         return moviesByDirectorVisitor.getMovies();
     }
 
-
+    /**
+     *
+     * @param age
+     * @returns list of toys whose age is below or equal to age threshold
+     */
     public List<Toy> getToysSuitableForAge(int age) {
 
         for(Product product : inventory.values()) {
@@ -65,6 +75,9 @@ public class Warehouse implements Element {
         return toyVisitor.getToys();
     }
 
+    /**
+     * @returns list of toys that require batteries
+     */
     public List<Toy> requiresBatteries(){
         for(Product product : inventory.values()) {
             product.accept(batteriesRequiredVisitor);
@@ -72,7 +85,11 @@ public class Warehouse implements Element {
         return batteriesRequiredVisitor.getToys();
     }
 
-
+    /**
+     *
+     * @param calories
+     * @returns List of foods which meet calorie threshold
+     */
     public List<Food> noFatty(int calories){
         calorieCounterVisitor.setCalories(calories);
         for(Product product : inventory.values()) {

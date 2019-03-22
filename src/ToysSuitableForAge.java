@@ -19,7 +19,10 @@ public class ToysSuitableForAge implements Visitor {
     @Override
     public void visit(Movie movie) { }
 
-
+    /**
+     * checks to see if toys meet age requirement if so adds to list
+     * @param toy
+     */
     @Override
     public void visit(Toy toy) {
         if(toy.getMinimumAge() >= age) {
